@@ -1,4 +1,4 @@
-# Benjamin Asjali — Portfolio
+# Benjamin Asjali Designing
 
 A personal landing page for **Benjamin Asjali, Backend Engineer & DevOps Engineer**, designed as a macOS-style desktop. Visitors explore the portfolio the way they'd explore a computer: open folders, move windows around, and type commands into a terminal.
 
