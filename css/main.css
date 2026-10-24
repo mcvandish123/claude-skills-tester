@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Benjamin Asjali — desktop portfolio
+   Entry stylesheet. Files load in this order and later ones win,
+   so keep overrides (states/) and the background at the bottom.
+   ========================================================================== */
+
+/* Foundations: design tokens, reset, wallpaper */
+@import url("base/tokens.css");
+@import url("base/reset.css");
+@import url("base/wallpaper.css");
+
+/* Glass material shared by the menu bar, dock and windows */
+@import url("components/glass.css");
+
+/* Desktop surface */
+@import url("desktop/menubar.css");
+@import url("desktop/hero.css");
+@import url("components/buttons.css");
+@import url("desktop/icons.css");
+
+/* Windows: the frame first, then each window's content */
+@import url("windows/window.css");
+@import url("components/profile.css");
+@import url("windows/about.css");
+@import url("windows/projects.css");
+@import url("windows/experience.css");
+@import url("windows/contact.css");
+@import url("windows/terminal.css");
+
+/* Dock, and the layout that positions everything when JS is on */
+@import url("desktop/dock.css");
+@import url("desktop/layout.css");
+
+/* Overrides: small screens, no JavaScript, reduced motion */
+@import url("states/responsive.css");
+@import url("states/no-js.css");
+@import url("states/reduced-motion.css");
+
+/* Animated background: light folds, bloom, doodle canvas */
+@import url("background/atmosphere.css");

@@ -1,7 +1,7 @@
 /* ==========================================================================
    Atmosphere background (atmosphere-background skill)
    Drifting vertical light folds, screen-blended, with a lower-right bloom.
-   Sparking doodles are drawn on top by animation.js.
+   Sparking doodles are drawn on top by js/background/doodles.js.
    Tinted from the page accent (#7cbcff).
    Transform/opacity animation only; static under reduced motion.
    ========================================================================== */
@@ -108,7 +108,7 @@
   to   { opacity: 1;    transform: scale(1.04) translate3d(-2vw, 0, 0); }
 }
 
-/* ---------- Doodles (drawn by animation.js) ---------- */
+/* ---------- Doodles (drawn by js/background/doodles.js) ---------- */
 /* Screen-blended so the strokes and sparks add light to the folds below. */
 .doodles {
   position: absolute;

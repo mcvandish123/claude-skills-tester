@@ -1,0 +1,64 @@
+/* ---------- Terminal ---------- */
+.term {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 18px 18px;
+  font: 13px/1.65 var(--font-mono);
+  color: var(--text-body);
+  background: rgba(2, 5, 12, 0.5);
+  border-radius: 0 0 var(--radius-win) var(--radius-win);
+}
+.term__out p { white-space: pre-wrap; word-break: break-word; }
+.term__prompt { color: var(--ok); white-space: nowrap; }
+.term__cmd { color: var(--text-main); }
+.term__res--strong { color: var(--text-main); font-weight: 500; }
+.term__muted { color: var(--text-muted); }
+.term__error { color: #fca5a5; }
+.term kbd { font: inherit; color: var(--text-main); }
+.term__ls { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.term__art {
+  margin: 6px 0 10px;
+  font: 8px/1 var(--font-mono);
+  color: var(--accent);
+  white-space: pre;
+  overflow-x: auto;
+  user-select: none;
+}
+.term__art--0 { opacity: 0.1; }
+.term__art--1 { opacity: 0.25; }
+.term__art--2 { opacity: 0.45; }
+.term__art--3 { opacity: 0.7; }
+.term__art--4 { color: var(--text-main); font-weight: 700; }
+.term__ls a,
+.term__ls button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--accent);
+  text-decoration: none;
+  cursor: pointer;
+}
+.term__ls a:hover,
+.term__ls button:hover { text-decoration: underline; text-underline-offset: 3px; }
+.term__form { display: flex; align-items: baseline; gap: 8px; margin-top: 2px; }
+.term__input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: var(--text-main);
+  caret-color: var(--ok);
+}
+.term__input:focus { outline: none; }
+.term__caret {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  vertical-align: -0.2em;
+  background: var(--ok);
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }

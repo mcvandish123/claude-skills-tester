@@ -1,0 +1,37 @@
+/* ==========================================================================
+   Glass surfaces
+   ========================================================================== */
+.glass,
+.menubar,
+.dock,
+.window {
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  backdrop-filter: blur(22px) saturate(150%);
+}
+
+/* Masked gradient border (glass-dark-ui) */
+.dock::before,
+.window::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    160deg,
+    rgba(203, 213, 225, 0.34) 0%,
+    rgba(124, 188, 255, 0.22) 38%,
+    rgba(148, 163, 184, 0.08) 70%,
+    rgba(148, 163, 184, 0.16) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .menubar, .dock, .window { background-color: var(--glass-solid) !important; }
+}

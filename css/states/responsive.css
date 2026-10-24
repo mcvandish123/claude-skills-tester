@@ -1,0 +1,68 @@
+/* ==========================================================================
+   Phones and narrow tablets
+   ========================================================================== */
+@media (max-width: 760px) {
+  :root { --dock-h: 76px; }
+
+  .menubar__nav,
+  .menubar__link { display: none; }
+
+  .js body { overflow: auto; height: auto; }
+  .js .desktop {
+    position: relative;
+    inset: auto;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    padding: calc(var(--menubar-h) + 44px) 20px calc(var(--dock-h) + 40px);
+  }
+  .js .hero { position: static; max-width: none; }
+  .hero__name { font-size: clamp(48px, 15vw, 72px); }
+  .js .icons { position: static; }
+  .icons ul { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .icon { width: auto; }
+
+  .js .windows { position: fixed; inset: 0; z-index: 40; }
+  .js .window {
+    left: 8px !important;
+    right: 8px;
+    top: calc(var(--menubar-h) + 8px) !important;
+    bottom: calc(var(--dock-h) + 20px);
+    width: auto;
+    max-width: none;
+    max-height: none;
+  }
+  .light--zoom { display: none; }
+  .window__body { padding: 22px 20px; }
+  .window__body--flush { padding: 0; }
+
+  .slide { grid-template-columns: 1fr; gap: 20px; padding: 20px; align-items: start; }
+  .focus { grid-template-columns: 1fr; }
+
+  .list__head { display: none; }
+  .list__row {
+    grid-template-columns: 44px minmax(0, 1fr);
+    grid-template-areas: "logo main" ". role" ". period";
+    gap: 4px 14px;
+    padding: 16px 20px;
+  }
+  .list__row .logo { grid-area: logo; align-self: start; }
+  .list__main { grid-area: main; }
+  .list__role { grid-area: role; margin-top: 6px; font-size: 13.5px; }
+  .list__period { grid-area: period; }
+  .list__intro { padding: 18px 20px 12px; }
+
+  .contact__row { grid-template-columns: 64px minmax(0, 1fr) 30px; gap: 12px; }
+
+  .dock { padding: 7px; border-radius: 20px; }
+  .dock ul { gap: 7px; }
+  .dock__item { width: 48px; height: 48px; }
+  .dock__sep,
+  .dock__social { display: none; }
+}
+
+@media (max-height: 640px) and (min-width: 761px) {
+  .hero__lede { display: none; }
+  .hero__actions { margin-top: 18px; }
+}

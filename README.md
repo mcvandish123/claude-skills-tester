@@ -12,6 +12,7 @@ A personal landing page for **Benjamin Asjali, Backend Engineer & DevOps Enginee
   | --- | --- |
   | `help` | List commands |
   | `whoami` | Print the owner's name |
+| `portrait` / `cat portrait.bin` | Print the binary portrait |
   | `ls` | List the Desktop folders as clickable links |
   | `open <folder>` / `cd <folder>` | Open `about`, `projects`, `experience` or `contact` |
   | `contact` | Print contact details |
@@ -42,17 +43,33 @@ The visual system combines several design skills from `.claude/skills/agent-skil
 
 ## Project structure
 
+Each feature lives in its own file, so you can open just the part you want to change.
+
 ```
-index.html      Page markup: menu bar, desktop, windows, dock
-style.css       Layout, glass and skeuomorphic components, responsive rules
-animation.css   Animated atmosphere background (light folds, bloom)
-animation.js    Sparking doodle animation (canvas)
-script.js       Window manager, terminal, carousel, clipboard, intro animation
+index.html                  Page markup: menu bar, desktop, windows, dock
+css/
+  main.css                  Entry point: imports every file below, in cascade order
+  base/                     tokens.css (colors, fonts, sizes), reset.css, wallpaper.css
+  components/               glass.css, buttons.css, profile.css (avatar + name block)
+  desktop/                  menubar.css, hero.css, icons.css, dock.css, layout.css
+  windows/                  window.css (frame, traffic lights), about, projects,
+                            experience, contact, terminal
+  states/                   responsive.css (phones), no-js.css, reduced-motion.css
+  background/atmosphere.css Animated light folds and bloom
+js/
+  core/app.js               Shared helpers ($, $$, motion checks). Loads first.
+  desktop/                  clock.js, media.js (missing-image fallbacks), boot.js (intro)
+  windows/                  manager.js (open/close/drag/zoom), carousel.js, clipboard.js
+  terminal/                 output.js (printing), commands.js (add commands here),
+                            intro.js (typed intro), portrait.js (binary portrait)
+  background/               doodle-shapes.js (SVG paths), doodles.js (canvas animation)
 assets/
-  profile.jpg       Your photo (add it)
-  projects/         Project screenshots: project-1.jpg, project-2.jpg, ...
-  companies/        Company logos: company-1.png, company-2.png, ...
+  profile.jpg               Your photo
+  projects/                 Project screenshots: project-1.jpg, project-2.jpg, ...
+  companies/                Company logos: company-1.png, company-2.png, ...
 ```
+
+The scripts are plain `<script defer>` files, not ES modules, so the page still works when `index.html` is opened directly. They share code through a single `window.App` object: a file adds what others need (for example `App.windows.openWin`) and later files read it. Script order in `index.html` matters.
 
 ## Running it
 
@@ -71,7 +88,7 @@ Every template spot in `index.html` has a comment explaining what to replace.
 - **Projects:** add a screenshot as `assets/projects/project-N.jpg` (16:10 works best), then edit the title, summary and stack. Paste the URLs into `href=""`; empty links show as disabled. Copy an `<article class="slide">` block to add a project; the counter and dots update automatically.
 - **Companies:** add a logo as `assets/companies/company-N.png`, then fill in the name, link, role, period and description. Copy an `<li class="list__row">` block to add a company.
 - **About:** the summary and focus areas are starting points. Rewrite them to match your actual work.
-- **Background:** at the top of `animation.css`, `--atmo-accent` sets the color. Each fold's `--x`, `--w`, `--a` and `--dur` set its position, width, brightness and speed.
+- **Background:** at the top of `css/background/atmosphere.css`, `--atmo-accent` sets the color. Each fold's `--x`, `--w`, `--a` and `--dur` set its position, width, brightness and speed.
 
 ## Built with
 

@@ -1,0 +1,22 @@
+/* ---------- Wallpaper ---------- */
+/* One light source above the screen, a faint dot grid for texture. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+body::before {
+  background:
+    radial-gradient(110% 65% at 50% -12%, rgba(84, 132, 214, 0.30), transparent 62%),
+    radial-gradient(60% 40% at 92% 108%, rgba(46, 104, 170, 0.16), transparent 70%),
+    linear-gradient(180deg, #0c1629 0%, #060b18 58%, var(--bg-0) 100%);
+}
+body::after {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.17) 1px, transparent 1.4px);
+  background-size: 24px 24px;
+  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 80%);
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 80%);
+}

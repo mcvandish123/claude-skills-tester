@@ -1,0 +1,11 @@
+/* ==========================================================================
+   No JavaScript: a plain, complete document
+   ========================================================================== */
+html:not(.js) .menubar { position: sticky; }
+html:not(.js) .desktop { padding: 64px var(--gutter) 40px; }
+html:not(.js) .icons { margin: 40px 0; }
+html:not(.js) .icons ul { flex-direction: row; flex-wrap: wrap; }
+html:not(.js) .window { max-width: 940px; margin: 0 auto 32px; }
+html:not(.js) .lights { display: none; }
+html:not(.js) .carousel__track { grid-auto-flow: row; }
+html:not(.js) .dock { position: static; margin: 0 auto 32px; }

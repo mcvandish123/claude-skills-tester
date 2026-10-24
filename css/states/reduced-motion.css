@@ -1,0 +1,15 @@
+/* ==========================================================================
+   Reduced motion: final states, no movement
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .dock__item:hover,
+  .dock li:has(+ li > .dock__item:hover) > .dock__item,
+  .dock li:hover + li > .dock__item { transform: none; }
+  .term__caret { animation: none; }
+}

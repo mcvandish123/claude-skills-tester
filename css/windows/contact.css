@@ -1,0 +1,26 @@
+/* ---------- Contact ---------- */
+.contact { margin-top: 8px; }
+.contact__row {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr) 30px;
+  align-items: center;
+  gap: 14px;
+  min-height: 54px;
+  border-bottom: 1px solid var(--hair);
+}
+.contact__label { font-size: 12.5px; color: var(--text-muted); text-align: right; }
+.contact__value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  color: var(--accent);
+  text-decoration: none;
+}
+.contact__value:hover { text-decoration: underline; text-underline-offset: 3px; }
+.contact__logo { justify-self: center; font-size: 18px; }
+.copy .copy__done { display: none; color: var(--ok); }
+.copy.is-copied .copy__idle { display: none; }
+.copy.is-copied .copy__done { display: block; }
+.contact__actions { display: flex; gap: 12px; margin-top: 24px; }
+.contact__actions .btn { flex: 1; }

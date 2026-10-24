@@ -1,0 +1,56 @@
+/* ==========================================================================
+   Layout: desktop mode (JS on, wide screens)
+   ========================================================================== */
+.js body { overflow: hidden; height: 100dvh; }
+.js .desktop {
+  position: fixed;
+  inset: var(--menubar-h) 0 0 0;
+}
+.js .hero {
+  position: absolute;
+  left: var(--gutter);
+  bottom: calc(var(--dock-h) + clamp(28px, 7vh, 72px));
+  max-width: min(640px, 52vw);
+}
+.js .icons {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+.js .windows {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.js .window {
+  position: absolute;
+  display: none;
+  width: var(--w, 640px);
+  max-width: calc(100vw - 32px);
+  max-height: calc(100dvh - var(--menubar-h) - var(--dock-h) - 28px);
+  pointer-events: auto;
+}
+.js .window.is-open { display: flex; }
+.js .window.is-minimized { display: none; }
+.js .window.is-dragging { transition: none; }
+.js .window.is-dragging .window__bar { cursor: grabbing; }
+.js .window.is-focused {
+  box-shadow:
+    0 40px 100px rgba(2, 6, 23, 0.7),
+    0 10px 26px rgba(2, 6, 23, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+.js .window.is-zoomed {
+  left: 8px !important;
+  top: 8px !important;
+  width: calc(100% - 16px);
+  max-width: none;
+  height: calc(100% - var(--dock-h) - 22px);
+  max-height: none;
+}
+
+.window--terminal { --w: min(580px, 46vw); }
+.window--about { --w: 640px; }
+.window--projects { --w: 940px; }
+.window--experience { --w: 780px; }
+.window--contact { --w: 500px; }

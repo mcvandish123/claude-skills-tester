@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Benjamin Asjali — desktop portfolio
+   Glass (glass-dark-ui): menu bar, dock, windows.
+   Tactile (skeuomorphic-ui): folders, dock tiles, traffic lights, buttons.
+   Light always comes from the top; one material per component.
+   ========================================================================== */
+
+:root {
+  /* Dark glass */
+  --bg-0: #03060f;
+  --bg-1: #0a1222;
+  --glass-fill: rgba(15, 23, 42, 0.45);
+  --glass-fill-strong: rgba(12, 19, 36, 0.78);
+  --glass-solid: #0d1527;
+  --text-main: #eef2f7;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
+  --hair: rgba(148, 163, 184, 0.14);
+  --accent: #7cbcff;
+  --accent-strong: #2f7fe0;
+  --ok: #4ade80;
+
+  /* Skeuomorphic edges */
+  --sk-edge-top: rgba(255, 255, 255, 0.24);
+  --sk-edge-bottom: rgba(0, 0, 0, 0.55);
+  --sk-highlight: rgba(255, 255, 255, 0.12);
+
+  /* Layout */
+  --menubar-h: 30px;
+  --dock-h: 84px;
+  --radius-win: 14px;
+  --gutter: clamp(20px, 4.5vw, 72px);
+
+  /* Type */
+  --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 180ms;
+}

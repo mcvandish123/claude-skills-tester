@@ -1,0 +1,26 @@
+/* ==========================================================================
+   Hero (on the wallpaper)
+   ========================================================================== */
+.hero__name {
+  font: 700 clamp(52px, 8.2vw, 128px)/0.9 var(--font-display);
+  letter-spacing: -0.048em;
+  color: #f4f7fb;
+  text-shadow: 0 2px 30px rgba(3, 6, 15, 0.5);
+}
+.hero__name .word { display: block; overflow: hidden; padding-bottom: 0.06em; margin-bottom: -0.06em; }
+.hero__name .word > span { display: inline-block; }
+.hero__role {
+  margin-top: 22px;
+  font-size: clamp(18px, 1.55vw, 23px);
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  color: var(--text-main);
+}
+.hero__role span[aria-hidden] { color: var(--accent); }
+.hero__lede {
+  max-width: 44ch;
+  margin-top: 10px;
+  font-size: 15.5px;
+  color: var(--text-body);
+}
+.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }

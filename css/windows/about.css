@@ -1,0 +1,21 @@
+/* ---------- About ---------- */
+.prose { padding: 24px 0; }
+.prose p { max-width: 62ch; font-size: 15.5px; line-height: 1.7; }
+.prose p + p { margin-top: 12px; }
+.focus {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--hair);
+}
+.focus dt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+.focus dt iconify-icon { font-size: 17px; color: var(--accent); }
+.focus dd { margin-top: 4px; font-size: 14px; line-height: 1.55; }

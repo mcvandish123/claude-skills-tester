@@ -1,0 +1,90 @@
+/* ---------- Projects carousel ---------- */
+.carousel { display: flex; flex-direction: column; min-height: 0; flex: 1 1 auto; }
+.toolbar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px 10px 24px;
+  border-bottom: 1px solid var(--hair);
+}
+.toolbar__count { font: 500 12.5px/1 var(--font-mono); color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.toolbar__count span:first-child { color: var(--text-main); }
+.toolbar__controls { display: flex; gap: 8px; }
+
+.carousel__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  border-radius: 0;
+}
+.carousel__track::-webkit-scrollbar { display: none; }
+.carousel__track:focus-visible { outline-offset: -3px; }
+
+.slide {
+  scroll-snap-align: start;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 32px;
+  padding: 28px;
+}
+/* Media well: pressed surface the screenshot sits in */
+.slide__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #070c18, #0e1628);
+  box-shadow:
+    inset 0 3px 10px rgba(0, 0, 0, 0.55),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+    0 0 0 1px rgba(148, 163, 184, 0.12);
+}
+.slide__media img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.slide__placeholder {
+  position: absolute;
+  inset: 0;
+  display: none;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  padding: 16px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.slide__placeholder iconify-icon { font-size: 30px; color: rgba(148, 163, 184, 0.6); }
+.slide__placeholder code { font: 12px var(--font-mono); color: var(--text-body); }
+.slide__media.is-missing img { display: none; }
+.slide__media.is-missing .slide__placeholder { display: grid; }
+
+.slide__meta { font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em; color: var(--text-muted); }
+.slide__title {
+  margin-top: 12px;
+  font: 650 clamp(22px, 2.2vw, 28px)/1.15 var(--font-display);
+  letter-spacing: -0.025em;
+  color: var(--text-main);
+}
+.slide__summary { margin-top: 12px; font-size: 15px; line-height: 1.65; }
+.slide__stack { margin-top: 14px; font: 12.5px/1.5 var(--font-mono); color: var(--accent); }
+.slide__links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
+.carousel__dots { display: flex; justify-content: center; gap: 6px; padding: 0 0 22px; }
+.carousel__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  background: rgba(148, 163, 184, 0.35);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.4);
+  transition: width 240ms var(--ease-out), background var(--t-fast);
+}
+.carousel__dot[aria-current="true"] { width: 22px; background: var(--accent); }

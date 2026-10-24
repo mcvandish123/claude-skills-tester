@@ -11,17 +11,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="animation.css">
+  <link rel="stylesheet" href="css/main.css">
 
   <!-- Icons: Solar + SVG Logos via Iconify. Motion: GSAP. Both are optional; the page works without them. -->
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="script.js" defer></script>
-  <script src="animation.js" defer></script>
+  <!-- App scripts, in load order. core/app.js comes first: the rest share helpers through window.App. -->
+  <script src="js/core/app.js" defer></script>
+  <script src="js/desktop/clock.js" defer></script>
+  <script src="js/desktop/media.js" defer></script>
+  <script src="js/windows/manager.js" defer></script>
+  <script src="js/windows/carousel.js" defer></script>
+  <script src="js/windows/clipboard.js" defer></script>
+  <script src="js/terminal/output.js" defer></script>
+  <script src="js/terminal/portrait.js" defer></script>
+  <script src="js/terminal/commands.js" defer></script>
+  <script src="js/terminal/intro.js" defer></script>
+  <script src="js/desktop/boot.js" defer></script>
+  <script src="js/background/doodle-shapes.js" defer></script>
+  <script src="js/background/doodles.js" defer></script>
 </head>
 <body>
-  <!-- Animated background: light folds (animation.css) + sparking doodles (animation.js) -->
+  <!-- Animated background: light folds (css/background/atmosphere.css) + sparking doodles (js/background/) -->
   <div class="atmosphere" aria-hidden="true">
     <span class="atmosphere__fold"></span>
     <span class="atmosphere__fold"></span>
@@ -161,8 +172,8 @@
         <div class="window__body">
           <div class="profile">
             <!-- Your photo: save it as assets/profile.jpg (square, at least 400×400). It is hidden until the file exists. -->
-            <div class="avatar" data-media>
-              <img src="assets/profile.jpg" alt="Portrait of Benjamin Asjali" width="176" height="176" data-fallback>
+            <div class="avatar avatar--about" data-media>
+              <img src="assets/profile.jpg" alt="Portrait of Benjamin Asjali" width="320" height="320" data-fallback>
             </div>
             <div>
               <h3 class="profile__name">Benjamin Asjali</h3>
