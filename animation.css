@@ -1,0 +1,162 @@
+/* ==========================================================================
+   Atmosphere background (atmosphere-background skill)
+   Drifting vertical light folds, screen-blended, with a lower-right bloom
+   and one slow signal beam. Tinted from the page accent (#7cbcff).
+   Transform/opacity animation only; static under reduced motion.
+   ========================================================================== */
+
+:root {
+  --atmo-base-top: #12213d;
+  --atmo-base-bottom: #070d1c;
+  --atmo-accent: 124 188 255;   /* --accent */
+  --atmo-ice: 205 230 255;      /* highlight where folds overlap */
+  --atmo-deep: 92 120 240;      /* cooler depth tone */
+}
+
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+  background:
+    radial-gradient(120% 70% at 50% -15%, rgb(var(--atmo-accent) / 0.24), transparent 60%),
+    linear-gradient(180deg, var(--atmo-base-top) 0%, #0b1529 55%, var(--atmo-base-bottom) 100%);
+}
+
+/* ---------- Folds ---------- */
+/* Each fold: tall band, dark at the top, luminous toward the bottom,
+   feathered on both sides so overlaps read as fabric, not columns. */
+.atmosphere__fold {
+  --x: 50%;
+  --w: 18vw;
+  --a: 0.5;
+  --dur: 26s;
+  --delay: 0s;
+  --sway: 4vw;
+  --skew: 6deg;
+
+  position: absolute;
+  top: -15%;
+  left: var(--x);
+  width: var(--w);
+  height: 130%;
+  margin-left: calc(var(--w) / -2);
+  opacity: var(--a);
+  mix-blend-mode: screen;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(var(--atmo-deep) / 0.18) 30%,
+    rgb(var(--atmo-accent) / 0.55) 68%,
+    rgb(var(--atmo-ice) / 0.85) 100%
+  );
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 35%, #000 55%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 35%, #000 55%, transparent);
+  filter: blur(18px);
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+  animation:
+    fold-drift var(--dur) ease-in-out var(--delay) infinite alternate,
+    fold-breathe calc(var(--dur) * 0.62) ease-in-out var(--delay) infinite alternate;
+}
+
+/* Weighted to the right so the hero (bottom left) keeps its contrast */
+.atmosphere__fold:nth-child(1) { --x: 18%; --w: 16vw; --a: 0.22; --dur: 31s; --delay: -6s;  --sway: 3vw; }
+.atmosphere__fold:nth-child(2) { --x: 34%; --w: 22vw; --a: 0.30; --dur: 27s; --delay: -14s; --skew: -5deg; }
+.atmosphere__fold:nth-child(3) { --x: 50%; --w: 14vw; --a: 0.42; --dur: 23s; --delay: -3s;  --sway: 5vw; }
+.atmosphere__fold:nth-child(4) { --x: 62%; --w: 26vw; --a: 0.50; --dur: 34s; --delay: -20s; --skew: 8deg; }
+.atmosphere__fold:nth-child(5) { --x: 74%; --w: 12vw; --a: 0.62; --dur: 21s; --delay: -9s;  --sway: 3vw; --skew: -7deg; }
+.atmosphere__fold:nth-child(6) { --x: 84%; --w: 20vw; --a: 0.70; --dur: 29s; --delay: -17s; }
+.atmosphere__fold:nth-child(7) { --x: 95%; --w: 16vw; --a: 0.58; --dur: 25s; --delay: -11s; --sway: 2vw; --skew: -4deg; }
+
+@keyframes fold-drift {
+  0%   { transform: translateX(calc(var(--sway) * -1)) skewX(calc(var(--skew) * -1)) scaleX(0.85); }
+  50%  { transform: translateX(calc(var(--sway) * 0.4)) skewX(calc(var(--skew) * 0.3)) scaleX(1.12); }
+  100% { transform: translateX(var(--sway)) skewX(var(--skew)) scaleX(0.95); }
+}
+
+@keyframes fold-breathe {
+  from { opacity: calc(var(--a) * 0.7); }
+  to   { opacity: var(--a); }
+}
+
+/* ---------- Bloom ---------- */
+.atmosphere__bloom {
+  position: absolute;
+  right: -20vw;
+  bottom: -35vh;
+  width: 85vw;
+  height: 85vh;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    closest-side,
+    rgb(var(--atmo-ice) / 0.55),
+    rgb(var(--atmo-accent) / 0.32) 38%,
+    rgb(var(--atmo-deep) / 0.12) 68%,
+    transparent
+  );
+  will-change: transform, opacity;
+  animation: bloom-breathe 14s ease-in-out infinite alternate;
+}
+
+@keyframes bloom-breathe {
+  from { opacity: 0.75; transform: scale(0.96) translate3d(0, 2vh, 0); }
+  to   { opacity: 1;    transform: scale(1.04) translate3d(-2vw, 0, 0); }
+}
+
+/* ---------- Signal beam: the one bright, narrow spark ---------- */
+.atmosphere__beam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  mix-blend-mode: screen;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(var(--atmo-ice) / 0.15) 25%,
+    rgb(var(--atmo-ice) / 0.75) 78%,
+    rgb(255 255 255 / 0.95) 100%
+  );
+  box-shadow:
+    0 0 12px 2px rgb(var(--atmo-accent) / 0.45),
+    0 0 48px 10px rgb(var(--atmo-accent) / 0.18);
+  will-change: transform, opacity;
+  animation: beam-sweep 22s ease-in-out infinite alternate;
+}
+
+@keyframes beam-sweep {
+  0%   { transform: translateX(56vw); opacity: 0.35; }
+  45%  { opacity: 0.9; }
+  100% { transform: translateX(88vw); opacity: 0.5; }
+}
+
+/* ---------- Phones: fewer, wider folds, lighter blur ---------- */
+@media (max-width: 760px) {
+  .atmosphere__fold { filter: blur(12px); }
+  .atmosphere__fold:nth-child(1),
+  .atmosphere__fold:nth-child(3) { display: none; }
+  .atmosphere__fold:nth-child(2) { --x: 20%; --w: 40vw; --a: 0.24; }
+  .atmosphere__fold:nth-child(4) { --x: 55%; --w: 46vw; }
+  .atmosphere__fold:nth-child(5) { --x: 75%; --w: 30vw; }
+  .atmosphere__fold:nth-child(6) { --x: 92%; --w: 40vw; }
+  .atmosphere__fold:nth-child(7) { display: none; }
+  .atmosphere__bloom { width: 140vw; height: 60vh; right: -50vw; bottom: -20vh; }
+  @keyframes beam-sweep {
+    0%   { transform: translateX(40vw); opacity: 0.35; }
+    45%  { opacity: 0.85; }
+    100% { transform: translateX(92vw); opacity: 0.5; }
+  }
+}
+
+/* ---------- Reduced motion: keep the composition, stop the drift ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .atmosphere__fold,
+  .atmosphere__bloom,
+  .atmosphere__beam { animation: none !important; }
+  .atmosphere__beam { transform: translateX(78vw); opacity: 0.5; }
+}

@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Benjamin Asjali — Backend &amp; DevOps Engineer</title>
+  <meta name="description" content="Benjamin Asjali is a backend engineer and DevOps engineer building APIs, data layers, CI/CD pipelines and cloud infrastructure.">
+  <meta name="theme-color" content="#050a16">
+  <script>document.documentElement.classList.add('js');</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animation.css">
+
+  <!-- Icons: Solar + SVG Logos via Iconify. Motion: GSAP. Both are optional; the page works without them. -->
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Animated background (styles in animation.css) -->
+  <div class="atmosphere" aria-hidden="true">
+    <span class="atmosphere__fold"></span>
+    <span class="atmosphere__fold"></span>
+    <span class="atmosphere__fold"></span>
+    <span class="atmosphere__fold"></span>
+    <span class="atmosphere__fold"></span>
+    <span class="atmosphere__fold"></span>
+    <span class="atmosphere__fold"></span>
+    <span class="atmosphere__bloom"></span>
+    <span class="atmosphere__beam"></span>
+  </div>
+
+  <a class="skip-link" href="#win-about" data-open="about">Skip to About</a>
+
+  <!-- ============ Menu bar ============ -->
+  <header class="menubar">
+    <div class="menubar__left">
+      <span class="menubar__mark" aria-hidden="true">BA</span>
+      <strong class="menubar__app">Benjamin Asjali</strong>
+      <nav class="menubar__nav" aria-label="Sections">
+        <ul>
+          <li><a href="#win-about" data-open="about">About</a></li>
+          <li><a href="#win-projects" data-open="projects">Projects</a></li>
+          <li><a href="#win-experience" data-open="experience">Experience</a></li>
+          <li><a href="#win-contact" data-open="contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="menubar__right">
+      <a class="menubar__link" href="mailto:benjaminasjali1@gmail.com">benjaminasjali1@gmail.com</a>
+      <time class="menubar__clock" id="clock"></time>
+    </div>
+  </header>
+
+  <!-- ============ Desktop ============ -->
+  <main class="desktop" id="desktop">
+    <section class="hero" aria-labelledby="hero-name">
+      <h1 class="hero__name" id="hero-name">Benjamin Asjali</h1>
+      <p class="hero__role">Backend Engineer <span aria-hidden="true">&amp;</span><span class="sr-only">and</span> DevOps Engineer</p>
+      <p class="hero__lede">I build and run backend systems: the APIs, the databases behind them, and the pipelines and cloud infrastructure they ship on.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#win-projects" data-open="projects">
+          View projects
+          <iconify-icon icon="solar:alt-arrow-right-linear" aria-hidden="true"></iconify-icon>
+        </a>
+        <a class="btn" href="#win-contact" data-open="contact">Get in touch</a>
+      </div>
+    </section>
+
+    <nav class="icons" aria-label="Desktop folders">
+      <ul>
+        <li>
+          <a class="icon" href="#win-about" data-open="about">
+            <span class="folder" aria-hidden="true">
+              <span class="folder__back"></span><span class="folder__paper"></span>
+              <span class="folder__front"><iconify-icon icon="solar:user-rounded-bold"></iconify-icon></span>
+            </span>
+            <span class="icon__label">About</span>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#win-projects" data-open="projects">
+            <span class="folder" aria-hidden="true">
+              <span class="folder__back"></span><span class="folder__paper"></span>
+              <span class="folder__front"><iconify-icon icon="solar:code-square-bold"></iconify-icon></span>
+            </span>
+            <span class="icon__label">Projects</span>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#win-experience" data-open="experience">
+            <span class="folder" aria-hidden="true">
+              <span class="folder__back"></span><span class="folder__paper"></span>
+              <span class="folder__front"><iconify-icon icon="solar:case-minimalistic-bold"></iconify-icon></span>
+            </span>
+            <span class="icon__label">Experience</span>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#win-contact" data-open="contact">
+            <span class="folder" aria-hidden="true">
+              <span class="folder__back"></span><span class="folder__paper"></span>
+              <span class="folder__front"><iconify-icon icon="solar:letter-bold"></iconify-icon></span>
+            </span>
+            <span class="icon__label">Contact</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="windows" id="windows">
+
+      <!-- ============ Terminal ============ -->
+      <section class="window window--terminal" id="win-terminal" data-window="terminal" aria-labelledby="title-terminal">
+        <header class="window__bar">
+          <div class="lights">
+            <button class="light light--close" type="button" data-action="close" aria-label="Close Terminal"></button>
+            <button class="light light--min" type="button" data-action="minimize" aria-label="Minimize Terminal"></button>
+            <button class="light light--zoom" type="button" data-action="zoom" aria-label="Zoom Terminal"></button>
+          </div>
+          <h2 class="window__title" id="title-terminal" tabindex="-1">benjamin — zsh</h2>
+        </header>
+        <div class="window__body term">
+          <div class="term__out" id="term-out">
+            <p class="term__line" data-intro><span class="term__prompt">benjamin@workstation ~ %</span> <span class="term__cmd">whoami</span></p>
+            <p class="term__res term__res--strong" data-intro>Benjamin Asjali</p>
+            <p class="term__line" data-intro><span class="term__prompt">benjamin@workstation ~ %</span> <span class="term__cmd">cat role.txt</span></p>
+            <p class="term__res" data-intro>Backend Engineer &amp; DevOps Engineer</p>
+            <p class="term__line" data-intro><span class="term__prompt">benjamin@workstation ~ %</span> <span class="term__cmd">ls ~/Desktop</span></p>
+            <p class="term__res term__ls" data-intro>
+              <a href="#win-about" data-open="about">About/</a>
+              <a href="#win-projects" data-open="projects">Projects/</a>
+              <a href="#win-experience" data-open="experience">Experience/</a>
+              <a href="#win-contact" data-open="contact">Contact/</a>
+            </p>
+            <p class="term__res term__muted" data-intro>Type <kbd>help</kbd> to see what this terminal can do.</p>
+          </div>
+          <form class="term__form" id="term-form" autocomplete="off">
+            <span class="term__prompt" aria-hidden="true">benjamin@workstation ~ %</span>
+            <input class="term__input" id="term-input" type="text" aria-label="Terminal command, type help for a list" spellcheck="false" autocapitalize="off" autocorrect="off">
+          </form>
+        </div>
+      </section>
+
+      <!-- ============ About ============ -->
+      <section class="window window--about" id="win-about" data-window="about" aria-labelledby="title-about">
+        <header class="window__bar">
+          <div class="lights">
+            <button class="light light--close" type="button" data-action="close" aria-label="Close About"></button>
+            <button class="light light--min" type="button" data-action="minimize" aria-label="Minimize About"></button>
+            <button class="light light--zoom" type="button" data-action="zoom" aria-label="Zoom About"></button>
+          </div>
+          <h2 class="window__title" id="title-about" tabindex="-1">About</h2>
+        </header>
+        <div class="window__body">
+          <div class="profile">
+            <!-- Your photo: save it as assets/profile.jpg (square, at least 400×400). It is hidden until the file exists. -->
+            <div class="avatar" data-media>
+              <img src="assets/profile.jpg" alt="Portrait of Benjamin Asjali" width="176" height="176" data-fallback>
+            </div>
+            <div>
+              <h3 class="profile__name">Benjamin Asjali</h3>
+              <p class="profile__role">Backend Engineer &amp; DevOps Engineer</p>
+            </div>
+          </div>
+
+          <div class="prose">
+            <p>I work on the parts of a product people only notice when they break: the APIs, the data underneath them, and the pipelines and infrastructure that get them to production.</p>
+            <p>I like production to be boring. Predictable deploys, useful logs and metrics, and services the next engineer can understand quickly.</p>
+          </div>
+
+          <!-- Edit these focus areas to match your actual work. Add a "Stack" row if you want to list tools. -->
+          <dl class="focus">
+            <div class="focus__item">
+              <dt><iconify-icon icon="solar:server-square-bold" aria-hidden="true"></iconify-icon>Backend services</dt>
+              <dd>REST and event-driven APIs, background jobs, and the data models behind them.</dd>
+            </div>
+            <div class="focus__item">
+              <dt><iconify-icon icon="solar:document-text-bold" aria-hidden="true"></iconify-icon>Data</dt>
+              <dd>Schema design, query performance, migrations and backups.</dd>
+            </div>
+            <div class="focus__item">
+              <dt><iconify-icon icon="solar:programming-bold" aria-hidden="true"></iconify-icon>Delivery</dt>
+              <dd>Build, test and release pipelines that make shipping routine.</dd>
+            </div>
+            <div class="focus__item">
+              <dt><iconify-icon icon="solar:folder-with-files-bold" aria-hidden="true"></iconify-icon>Infrastructure</dt>
+              <dd>Containers, cloud environments, infrastructure as code and observability.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ============ Projects ============ -->
+      <section class="window window--projects" id="win-projects" data-window="projects" aria-labelledby="title-projects">
+        <header class="window__bar">
+          <div class="lights">
+            <button class="light light--close" type="button" data-action="close" aria-label="Close Projects"></button>
+            <button class="light light--min" type="button" data-action="minimize" aria-label="Minimize Projects"></button>
+            <button class="light light--zoom" type="button" data-action="zoom" aria-label="Zoom Projects"></button>
+          </div>
+          <h2 class="window__title" id="title-projects" tabindex="-1">Projects</h2>
+        </header>
+
+        <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Projects">
+          <div class="toolbar">
+            <p class="toolbar__count" aria-live="polite"><span data-carousel-current>1</span> of <span data-carousel-total>3</span></p>
+            <div class="toolbar__controls">
+              <button class="btn btn--icon" type="button" data-carousel-prev aria-label="Previous project">
+                <iconify-icon icon="solar:alt-arrow-left-linear" aria-hidden="true"></iconify-icon>
+              </button>
+              <button class="btn btn--icon" type="button" data-carousel-next aria-label="Next project">
+                <iconify-icon icon="solar:alt-arrow-right-linear" aria-hidden="true"></iconify-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="window__body window__body--flush">
+            <div class="carousel__track" tabindex="0" aria-label="Project slides, use left and right arrow keys">
+
+              <!--
+                PROJECT 1
+                1. Save a screenshot as assets/projects/project-1.jpg (16:10 works best).
+                2. Replace the year, category, title, summary and stack.
+                3. Paste your links into the two href="" attributes. Empty links stay disabled.
+                Copy a whole <article> block to add another project; dots and counter update themselves.
+              -->
+              <article class="slide" aria-roledescription="slide">
+                <figure class="slide__media" data-media>
+                  <img src="assets/projects/project-1.jpg" alt="Screenshot of Project One" width="1600" height="1000" loading="lazy" data-fallback>
+                  <figcaption class="slide__placeholder">
+                    <iconify-icon icon="solar:gallery-wide-linear" aria-hidden="true"></iconify-icon>
+                    <span>Add a screenshot at<br><code>assets/projects/project-1.jpg</code></span>
+                  </figcaption>
+                </figure>
+                <div class="slide__body">
+                  <p class="slide__meta">2025 · Backend</p>
+                  <h3 class="slide__title">Project One</h3>
+                  <p class="slide__summary">One or two sentences on the problem, what you built and the result it had. Replace this text with your own.</p>
+                  <p class="slide__stack">Tech · Tech · Tech</p>
+                  <div class="slide__links">
+                    <a class="btn btn--sm" href="" target="_blank" rel="noopener">
+                      <iconify-icon icon="logos:github-icon" class="invert" aria-hidden="true"></iconify-icon>Repository
+                    </a>
+                    <a class="btn btn--sm btn--primary" href="" target="_blank" rel="noopener">
+                      Live site<iconify-icon icon="solar:arrow-right-up-linear" aria-hidden="true"></iconify-icon>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- PROJECT 2 -->
+              <article class="slide" aria-roledescription="slide">
+                <figure class="slide__media" data-media>
+                  <img src="assets/projects/project-2.jpg" alt="Screenshot of Project Two" width="1600" height="1000" loading="lazy" data-fallback>
+                  <figcaption class="slide__placeholder">
+                    <iconify-icon icon="solar:gallery-wide-linear" aria-hidden="true"></iconify-icon>
+                    <span>Add a screenshot at<br><code>assets/projects/project-2.jpg</code></span>
+                  </figcaption>
+                </figure>
+                <div class="slide__body">
+                  <p class="slide__meta">2025 · DevOps</p>
+                  <h3 class="slide__title">Project Two</h3>
+                  <p class="slide__summary">One or two sentences on the problem, what you built and the result it had. Replace this text with your own.</p>
+                  <p class="slide__stack">Tech · Tech · Tech</p>
+                  <div class="slide__links">
+                    <a class="btn btn--sm" href="" target="_blank" rel="noopener">
+                      <iconify-icon icon="logos:github-icon" class="invert" aria-hidden="true"></iconify-icon>Repository
+                    </a>
+                    <a class="btn btn--sm btn--primary" href="" target="_blank" rel="noopener">
+                      Live site<iconify-icon icon="solar:arrow-right-up-linear" aria-hidden="true"></iconify-icon>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- PROJECT 3 -->
+              <article class="slide" aria-roledescription="slide">
+                <figure class="slide__media" data-media>
+                  <img src="assets/projects/project-3.jpg" alt="Screenshot of Project Three" width="1600" height="1000" loading="lazy" data-fallback>
+                  <figcaption class="slide__placeholder">
+                    <iconify-icon icon="solar:gallery-wide-linear" aria-hidden="true"></iconify-icon>
+                    <span>Add a screenshot at<br><code>assets/projects/project-3.jpg</code></span>
+                  </figcaption>
+                </figure>
+                <div class="slide__body">
+                  <p class="slide__meta">2024 · Full stack</p>
+                  <h3 class="slide__title">Project Three</h3>
+                  <p class="slide__summary">One or two sentences on the problem, what you built and the result it had. Replace this text with your own.</p>
+                  <p class="slide__stack">Tech · Tech · Tech</p>
+                  <div class="slide__links">
+                    <a class="btn btn--sm" href="" target="_blank" rel="noopener">
+                      <iconify-icon icon="logos:github-icon" class="invert" aria-hidden="true"></iconify-icon>Repository
+                    </a>
+                    <a class="btn btn--sm btn--primary" href="" target="_blank" rel="noopener">
+                      Live site<iconify-icon icon="solar:arrow-right-up-linear" aria-hidden="true"></iconify-icon>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+            <div class="carousel__dots" data-carousel-dots></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Experience ============ -->
+      <section class="window window--experience" id="win-experience" data-window="experience" aria-labelledby="title-experience">
+        <header class="window__bar">
+          <div class="lights">
+            <button class="light light--close" type="button" data-action="close" aria-label="Close Experience"></button>
+            <button class="light light--min" type="button" data-action="minimize" aria-label="Minimize Experience"></button>
+            <button class="light light--zoom" type="button" data-action="zoom" aria-label="Zoom Experience"></button>
+          </div>
+          <h2 class="window__title" id="title-experience" tabindex="-1">Experience</h2>
+        </header>
+        <div class="window__body window__body--flush">
+          <p class="list__intro">Companies I’ve worked with</p>
+          <div class="list__head" aria-hidden="true">
+            <span></span><span>Company</span><span>Role</span><span>Period</span>
+          </div>
+          <ol class="list">
+            <!--
+              COMPANY 1
+              1. Save the logo as assets/companies/company-1.png (square, transparent background is best).
+              2. Replace the name, link, role, period and description.
+              Copy a whole <li> block to add another company.
+            -->
+            <li class="list__row">
+              <span class="logo" data-media>
+                <img src="assets/companies/company-1.png" alt="" width="80" height="80" loading="lazy" data-fallback>
+                <iconify-icon icon="solar:buildings-2-linear" class="logo__fallback" aria-hidden="true"></iconify-icon>
+              </span>
+              <div class="list__main">
+                <h3 class="list__company"><a href="" target="_blank" rel="noopener">Company Name</a></h3>
+                <p class="list__desc">One line on what you owned there and the impact it had.</p>
+              </div>
+              <p class="list__role"><span class="sr-only">Role: </span>Backend Engineer</p>
+              <p class="list__period"><span class="sr-only">Period: </span>2024 – Present</p>
+            </li>
+
+            <!-- COMPANY 2 -->
+            <li class="list__row">
+              <span class="logo" data-media>
+                <img src="assets/companies/company-2.png" alt="" width="80" height="80" loading="lazy" data-fallback>
+                <iconify-icon icon="solar:buildings-2-linear" class="logo__fallback" aria-hidden="true"></iconify-icon>
+              </span>
+              <div class="list__main">
+                <h3 class="list__company"><a href="" target="_blank" rel="noopener">Company Name</a></h3>
+                <p class="list__desc">One line on what you owned there and the impact it had.</p>
+              </div>
+              <p class="list__role"><span class="sr-only">Role: </span>DevOps Engineer</p>
+              <p class="list__period"><span class="sr-only">Period: </span>2023 – 2024</p>
+            </li>
+
+            <!-- COMPANY 3 -->
+            <li class="list__row">
+              <span class="logo" data-media>
+                <img src="assets/companies/company-3.png" alt="" width="80" height="80" loading="lazy" data-fallback>
+                <iconify-icon icon="solar:buildings-2-linear" class="logo__fallback" aria-hidden="true"></iconify-icon>
+              </span>
+              <div class="list__main">
+                <h3 class="list__company"><a href="" target="_blank" rel="noopener">Company Name</a></h3>
+                <p class="list__desc">One line on what you owned there and the impact it had.</p>
+              </div>
+              <p class="list__role"><span class="sr-only">Role: </span>Role Title</p>
+              <p class="list__period"><span class="sr-only">Period: </span>2022 – 2023</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ Contact ============ -->
+      <section class="window window--contact" id="win-contact" data-window="contact" aria-labelledby="title-contact">
+        <header class="window__bar">
+          <div class="lights">
+            <button class="light light--close" type="button" data-action="close" aria-label="Close Contact"></button>
+            <button class="light light--min" type="button" data-action="minimize" aria-label="Minimize Contact"></button>
+            <button class="light light--zoom" type="button" data-action="zoom" aria-label="Zoom Contact"></button>
+          </div>
+          <h2 class="window__title" id="title-contact" tabindex="-1">Contact</h2>
+        </header>
+        <div class="window__body">
+          <div class="profile profile--center">
+            <div class="avatar" data-media>
+              <img src="assets/profile.jpg" alt="Portrait of Benjamin Asjali" width="176" height="176" data-fallback>
+            </div>
+            <div>
+              <h3 class="profile__name">Benjamin Asjali</h3>
+              <p class="profile__role">Backend Engineer &amp; DevOps Engineer</p>
+            </div>
+          </div>
+
+          <ul class="contact">
+            <li class="contact__row">
+              <span class="contact__label">mobile</span>
+              <a class="contact__value" href="tel:+639053386927">0905 338 6927</a>
+              <button class="btn btn--icon btn--sm copy" type="button" data-copy="09053386927" aria-label="Copy mobile number">
+                <iconify-icon icon="solar:copy-linear" class="copy__idle" aria-hidden="true"></iconify-icon>
+                <iconify-icon icon="solar:check-circle-linear" class="copy__done" aria-hidden="true"></iconify-icon>
+              </button>
+            </li>
+            <li class="contact__row">
+              <span class="contact__label">email</span>
+              <a class="contact__value" href="mailto:benjaminasjali1@gmail.com">benjaminasjali1@gmail.com</a>
+              <button class="btn btn--icon btn--sm copy" type="button" data-copy="benjaminasjali1@gmail.com" aria-label="Copy email address">
+                <iconify-icon icon="solar:copy-linear" class="copy__idle" aria-hidden="true"></iconify-icon>
+                <iconify-icon icon="solar:check-circle-linear" class="copy__done" aria-hidden="true"></iconify-icon>
+              </button>
+            </li>
+            <li class="contact__row">
+              <span class="contact__label">LinkedIn</span>
+              <a class="contact__value" href="https://www.linkedin.com/in/benjamin-asjali/" target="_blank" rel="noopener">in/benjamin-asjali</a>
+              <iconify-icon icon="logos:linkedin-icon" class="contact__logo" aria-hidden="true"></iconify-icon>
+            </li>
+            <li class="contact__row">
+              <span class="contact__label">GitHub</span>
+              <a class="contact__value" href="https://github.com/mcvandish123" target="_blank" rel="noopener">mcvandish123</a>
+              <iconify-icon icon="logos:github-icon" class="contact__logo invert" aria-hidden="true"></iconify-icon>
+            </li>
+            <li class="contact__row">
+              <span class="contact__label">Facebook</span>
+              <a class="contact__value" href="https://www.facebook.com/benjamin.asjali.5/" target="_blank" rel="noopener">benjamin.asjali.5</a>
+              <iconify-icon icon="logos:facebook" class="contact__logo" aria-hidden="true"></iconify-icon>
+            </li>
+          </ul>
+
+          <div class="contact__actions">
+            <a class="btn btn--primary" href="mailto:benjaminasjali1@gmail.com">
+              <iconify-icon icon="solar:letter-bold" aria-hidden="true"></iconify-icon>Send an email
+            </a>
+            <a class="btn" href="tel:+639053386927">
+              <iconify-icon icon="solar:phone-bold" aria-hidden="true"></iconify-icon>Call
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ============ Dock ============ -->
+  <nav class="dock" aria-label="Dock">
+    <ul>
+      <li>
+        <a class="dock__item" href="#win-terminal" data-open="terminal" aria-label="Terminal">
+          <span class="tile tile--terminal" aria-hidden="true">&gt;_</span>
+          <span class="dock__tip" aria-hidden="true">Terminal</span>
+        </a>
+      </li>
+      <li>
+        <a class="dock__item" href="#win-about" data-open="about" aria-label="About">
+          <span class="tile tile--folder" aria-hidden="true"><iconify-icon icon="solar:user-rounded-bold"></iconify-icon></span>
+          <span class="dock__tip" aria-hidden="true">About</span>
+        </a>
+      </li>
+      <li>
+        <a class="dock__item" href="#win-projects" data-open="projects" aria-label="Projects">
+          <span class="tile tile--folder" aria-hidden="true"><iconify-icon icon="solar:code-square-bold"></iconify-icon></span>
+          <span class="dock__tip" aria-hidden="true">Projects</span>
+        </a>
+      </li>
+      <li>
+        <a class="dock__item" href="#win-experience" data-open="experience" aria-label="Experience">
+          <span class="tile tile--folder" aria-hidden="true"><iconify-icon icon="solar:case-minimalistic-bold"></iconify-icon></span>
+          <span class="dock__tip" aria-hidden="true">Experience</span>
+        </a>
+      </li>
+      <li>
+        <a class="dock__item" href="#win-contact" data-open="contact" aria-label="Contact">
+          <span class="tile tile--folder" aria-hidden="true"><iconify-icon icon="solar:letter-bold"></iconify-icon></span>
+          <span class="dock__tip" aria-hidden="true">Contact</span>
+        </a>
+      </li>
+      <li class="dock__sep" aria-hidden="true"></li>
+      <li class="dock__social">
+        <a class="dock__item" href="https://github.com/mcvandish123" target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)">
+          <span class="tile tile--light" aria-hidden="true"><iconify-icon icon="logos:github-icon"></iconify-icon></span>
+          <span class="dock__tip" aria-hidden="true">GitHub</span>
+        </a>
+      </li>
+      <li class="dock__social">
+        <a class="dock__item" href="https://www.linkedin.com/in/benjamin-asjali/" target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)">
+          <span class="tile tile--light" aria-hidden="true"><iconify-icon icon="logos:linkedin-icon"></iconify-icon></span>
+          <span class="dock__tip" aria-hidden="true">LinkedIn</span>
+        </a>
+      </li>
+      <li class="dock__social">
+        <a class="dock__item" href="https://www.facebook.com/benjamin.asjali.5/" target="_blank" rel="noopener" aria-label="Facebook (opens in a new tab)">
+          <span class="tile tile--light" aria-hidden="true"><iconify-icon icon="logos:facebook"></iconify-icon></span>
+          <span class="dock__tip" aria-hidden="true">Facebook</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <p class="sr-only" id="sr-status" aria-live="polite"></p>
+</body>
+</html>
