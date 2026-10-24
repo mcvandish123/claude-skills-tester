@@ -26,7 +26,9 @@
     out.removeAttribute('aria-busy');
   }
 
-  async function typeIntro() {
+  // Hides the transcript right away, then waits for `ready` (the window's open
+  // animation) before typing, so text changes never repaint a moving window.
+  async function typeIntro(ready) {
     if (!canAnimate()) { finishIntro(); return; }
     const parts = $$('[data-intro]', out);
     out.setAttribute('aria-busy', 'true');
@@ -34,6 +36,7 @@
     const caret = document.createElement('span');
     caret.className = 'term__caret';
     caret.setAttribute('aria-hidden', 'true');
+    await ready;
 
     for (const el of parts) {
       if (introDone) return;

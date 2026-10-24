@@ -44,8 +44,10 @@
 
     if (withTerminal) {
       tl.add(() => {
-        openWin('terminal', dockItem('terminal'), { focus: false });
-        typeIntro();
+        // Hide the transcript before the window is measured, and type once it has landed
+        let opened;
+        typeIntro(new Promise((resolve) => { opened = resolve; }));
+        openWin('terminal', dockItem('terminal'), { focus: false, onOpen: opened });
       }, 0.95);
     } else {
       finishIntro();

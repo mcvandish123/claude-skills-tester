@@ -33,6 +33,17 @@
 .js .window.is-open { display: flex; }
 .js .window.is-minimized { display: none; }
 .js .window.is-dragging { transition: none; }
+/* Open/close animation: own compositor layer, no backdrop blur. Re-blurring the
+   wallpaper on every frame of a scale + fade is the costliest paint on the page;
+   the solid glass is close enough in tone that the swap back is not visible. */
+.js .window.is-animating {
+  will-change: transform, opacity;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.012) 30%),
+    var(--glass-solid);
+}
 .js .window.is-dragging .window__bar { cursor: grabbing; }
 .js .window.is-focused {
   box-shadow:
