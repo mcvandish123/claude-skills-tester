@@ -350,11 +350,80 @@
     out.append(p);
   }
 
+  // Portrait as binary, Arch-logo style. Each digit is a tone level (0 dark, 4 light);
+  // the 0s and 1s drawn on top are rolled fresh on every render.
+  const PORTRAIT = [
+    '                      44   444444444444444',
+    '                    44444443333333333333344',
+    '                    4433443222222222222223444',
+    '                   4443334212222222222222233344',
+    '                44444432221112222222222222122334',
+    '                4433222111111222211112222222223344',
+    '                44322221111111212122111112222222333',
+    '                432211111122222222222222112222222234',
+    '                431111112333333332233333221221222223',
+    '                3211111223333333323334433322221121123',
+    '                4211112333344444333444444444331111112',
+    '                3211123334444444444444444444443310002',
+    '                 21112334444444444444444433334443111',
+    '                 21122222111223333333100000122444312',
+    '                  1232221100000012221111234443344301',
+    '                  3232223332210013442110012211234401',
+    '                   232101000212124443310000212344434',
+    '                  4322100101223234444443222344444443',
+    '                  1333432222233224444444444444444433',
+    '                   233444333342234444444444444444434',
+    '                   32233333443234444444444444433334',
+    '                    3123334433220122003444444433344',
+    '                    4122333444200002323444444433343',
+    '                     22222344443333344444444444334',
+    '                      122233432133444433213444434',
+    '                      211111001100010000001234334',
+    '                       2110010000110233333333334',
+    '                        211111111233332333333334',
+    '                        31111111000000122223333',
+    '                        2100011111111222333333',
+    '                       42110001122222333332234',
+    '                    334211110000011111111123334',
+    '                  432331111110000000000123333221334',
+    '               423210132111111111001112233333220011344444',
+    '           3333122100012111111111111122233224210000033444444',
+    '         334431122000002211101111110111233234200000023334443444',
+    '      323431331121010000232221112210001133333100000013112222333444',
+    '  1343343332132120011000024333212332211233341100000002222222222234444',
+    ' 144444323322121100110000003443333444322332100000000011112111211222344',
+    '44334322212110000000000000000344444444333100000000002111121111111001234',
+    '433332101000000000000010000000003344442100000000000022211111111111121234',
+    '311110000000000000000000000000000000000000000000000011112112111110010112',
+    '000000000000000000000000000000000000000000000000000001012101101110001002',
+  ];
+
+  function portrait(pre = document.createElement('pre')) {
+    pre.className = 'term__art';
+    pre.setAttribute('aria-hidden', 'true');
+    pre.replaceChildren();
+    PORTRAIT.forEach((row, i) => {
+      if (i) pre.append('\n');
+      row.replace(/ +|(\d)\1*/g, (run, level) => {
+        if (!level) { pre.append(run); return run; }
+        const span = document.createElement('span');
+        span.className = `term__art--${level}`;
+        span.textContent = run.replace(/./g, () => (Math.random() < 0.5 ? '0' : '1'));
+        pre.append(span);
+        return run;
+      });
+    });
+    if (!pre.isConnected) out.append(pre);
+    return pre;
+  }
+  portrait($('[data-portrait]', out));
+
   const commands = {
     help() {
       [
         'help              list commands',
         'whoami            who runs this machine',
+        'portrait          print my face in binary',
         'ls                list Desktop folders',
         'open <folder>     open about, projects, experience or contact',
         'contact           print contact details',
@@ -362,9 +431,9 @@
       ].forEach((t) => line(t));
     },
     whoami() { line('Benjamin Asjali', 'term__res term__res--strong'); },
+    portrait() { portrait(); },
     ls: listFolders,
     contact() {
-      line('mobile    0905 338 6927');
       line('email     benjaminasjali1@gmail.com');
       line('linkedin  linkedin.com/in/benjamin-asjali');
       line('github    github.com/mcvandish123');
@@ -390,6 +459,8 @@
     const [name, ...args] = cmd.split(/\s+/);
     if (name === 'cat' && args[0] === 'role.txt') {
       line('Backend Engineer & DevOps Engineer');
+    } else if (name === 'cat' && args[0] === 'portrait.bin') {
+      portrait();
     } else if (name === 'sudo') {
       line('Nice try. This incident will be reported.', 'term__res term__muted');
     } else if (commands[name.toLowerCase()]) {
