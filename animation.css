@@ -1,7 +1,8 @@
 /* ==========================================================================
    Atmosphere background (atmosphere-background skill)
-   Drifting vertical light folds, screen-blended, with a lower-right bloom
-   and one slow signal beam. Tinted from the page accent (#7cbcff).
+   Drifting vertical light folds, screen-blended, with a lower-right bloom.
+   Sparking doodles are drawn on top by animation.js.
+   Tinted from the page accent (#7cbcff).
    Transform/opacity animation only; static under reduced motion.
    ========================================================================== */
 
@@ -107,32 +108,14 @@
   to   { opacity: 1;    transform: scale(1.04) translate3d(-2vw, 0, 0); }
 }
 
-/* ---------- Signal beam: the one bright, narrow spark ---------- */
-.atmosphere__beam {
+/* ---------- Doodles (drawn by animation.js) ---------- */
+/* Screen-blended so the strokes and sparks add light to the folds below. */
+.doodles {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 2px;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   mix-blend-mode: screen;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgb(var(--atmo-ice) / 0.15) 25%,
-    rgb(var(--atmo-ice) / 0.75) 78%,
-    rgb(255 255 255 / 0.95) 100%
-  );
-  box-shadow:
-    0 0 12px 2px rgb(var(--atmo-accent) / 0.45),
-    0 0 48px 10px rgb(var(--atmo-accent) / 0.18);
-  will-change: transform, opacity;
-  animation: beam-sweep 22s ease-in-out infinite alternate;
-}
-
-@keyframes beam-sweep {
-  0%   { transform: translateX(56vw); opacity: 0.35; }
-  45%  { opacity: 0.9; }
-  100% { transform: translateX(88vw); opacity: 0.5; }
 }
 
 /* ---------- Phones: fewer, wider folds, lighter blur ---------- */
@@ -146,17 +129,10 @@
   .atmosphere__fold:nth-child(6) { --x: 92%; --w: 40vw; }
   .atmosphere__fold:nth-child(7) { display: none; }
   .atmosphere__bloom { width: 140vw; height: 60vh; right: -50vw; bottom: -20vh; }
-  @keyframes beam-sweep {
-    0%   { transform: translateX(40vw); opacity: 0.35; }
-    45%  { opacity: 0.85; }
-    100% { transform: translateX(92vw); opacity: 0.5; }
-  }
 }
 
 /* ---------- Reduced motion: keep the composition, stop the drift ---------- */
 @media (prefers-reduced-motion: reduce) {
   .atmosphere__fold,
-  .atmosphere__bloom,
-  .atmosphere__beam { animation: none !important; }
-  .atmosphere__beam { transform: translateX(78vw); opacity: 0.5; }
+  .atmosphere__bloom { animation: none !important; }
 }

@@ -28,13 +28,14 @@ The visual system combines several design skills from `.claude/skills/agent-skil
 
 - **glass-dark-ui:** frosted dark glass for the menu bar, dock and windows, with masked gradient borders.
 - **skeuomorphic-ui:** tactile folders, dock tiles, traffic-light buttons and buttons that press in when clicked. Light always comes from the top.
-- **atmosphere-background:** slowly drifting vertical light bands in the accent blue, a glow in the lower-right corner, and one sweeping beam of light.
+- **atmosphere-background:** slowly drifting vertical light bands in the accent blue and a glow in the lower-right corner.
+- **Sparking doodles:** backend and DevOps line doodles (cloud, database, server rack, terminal, git branch, gear, the DevOps ∞ loop and more) draw themselves with a glowing pen tip that throws sparks, then glint and fade so the next one can start. They avoid your name, the folders and any open windows.
 - **no-ai-design-slop:** used as a quality check. The page avoids fake testimonials, logo walls and invented metrics.
 
 ## Accessibility and resilience
 
 - **Without JavaScript:** the page still renders as a complete, readable document.
-- **Reduced motion:** with `prefers-reduced-motion` on, the intro, typing, window animations and background drift are all skipped.
+- **Reduced motion:** with `prefers-reduced-motion` on, the intro, typing, window animations and background drift are all skipped, and the doodles appear finished without sparks.
 - **Keyboard:** everything is reachable by keyboard, with visible focus states. Focus returns to the folder or button that opened a window when it closes.
 - **Phones:** windows open as full-screen sheets and the folders sit in a grid.
 - **CDN failures:** GSAP and Iconify load from CDNs. If either fails, the page still works, just without the animations or icons.
@@ -44,7 +45,8 @@ The visual system combines several design skills from `.claude/skills/agent-skil
 ```
 index.html      Page markup: menu bar, desktop, windows, dock
 style.css       Layout, glass and skeuomorphic components, responsive rules
-animation.css   Animated atmosphere background
+animation.css   Animated atmosphere background (light folds, bloom)
+animation.js    Sparking doodle animation (canvas)
 script.js       Window manager, terminal, carousel, clipboard, intro animation
 assets/
   profile.jpg       Your photo (add it)

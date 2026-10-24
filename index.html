@@ -18,9 +18,10 @@
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="script.js" defer></script>
+  <script src="animation.js" defer></script>
 </head>
 <body>
-  <!-- Animated background (styles in animation.css) -->
+  <!-- Animated background: light folds (animation.css) + sparking doodles (animation.js) -->
   <div class="atmosphere" aria-hidden="true">
     <span class="atmosphere__fold"></span>
     <span class="atmosphere__fold"></span>
@@ -30,7 +31,7 @@
     <span class="atmosphere__fold"></span>
     <span class="atmosphere__fold"></span>
     <span class="atmosphere__bloom"></span>
-    <span class="atmosphere__beam"></span>
+    <canvas class="doodles"></canvas>
   </div>
 
   <a class="skip-link" href="#win-about" data-open="about">Skip to About</a>
