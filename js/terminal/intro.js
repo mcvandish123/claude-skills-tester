@@ -37,6 +37,8 @@
     caret.className = 'term__caret';
     caret.setAttribute('aria-hidden', 'true');
     await ready;
+    // Fetch three.js while the first command types, so the portrait can start on time
+    if ($('[data-portrait]', out)) App.preloadPortrait();
 
     for (const el of parts) {
       if (introDone) return;
@@ -53,6 +55,9 @@
           await sleep(34 + Math.random() * 40);
         }
         await sleep(200);
+      } else if (el.matches('[data-portrait]')) {
+        await App.animatePortrait(el);
+        await sleep(160);
       } else {
         await sleep(110);
       }

@@ -33,6 +33,15 @@
 .term__art--2 { color: rgb(124 188 255 / 0.45); }
 .term__art--3 { color: rgb(124 188 255 / 0.7); }
 .term__art--4 { color: var(--text-main); font-weight: 700; }
+/* `cat portrait.bin`: the three.js canvas sits over the <pre> until the digits land */
+.term__art-stage { position: relative; overflow: hidden; }
+.term__art-stage .term__art.is-pending { visibility: hidden; }
+.term__art-3d {
+  position: absolute;
+  pointer-events: none;
+  transition: opacity 220ms ease-out;
+}
+.term__art-3d.is-done { opacity: 0; }
 .term__ls a,
 .term__ls button {
   padding: 0;

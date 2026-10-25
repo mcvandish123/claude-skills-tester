@@ -16,5 +16,20 @@ window.App = (() => {
   const status = $('#sr-status');
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-  return { $, $$, reduceMotion, phone, canAnimate, status, sleep };
+  // Load a script on first use, once. Heavy libraries (three.js) stay off the boot path.
+  const scripts = new Map();
+  function loadScript(src) {
+    if (!scripts.has(src)) {
+      scripts.set(src, new Promise((resolve, reject) => {
+        const el = document.createElement('script');
+        el.src = src;
+        el.onload = resolve;
+        el.onerror = () => { scripts.delete(src); el.remove(); reject(new Error(`Could not load ${src}`)); };
+        document.head.append(el);
+      }));
+    }
+    return scripts.get(src);
+  }
+
+  return { $, $$, reduceMotion, phone, canAnimate, status, sleep, loadScript };
 })();

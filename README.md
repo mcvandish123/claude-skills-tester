@@ -12,7 +12,7 @@ A personal landing page for **Benjamin Asjali, Backend Engineer & DevOps Enginee
   | --- | --- |
   | `help` | List commands |
   | `whoami` | Print the owner's name |
-| `portrait` / `cat portrait.bin` | Print the binary portrait |
+| `portrait` / `cat portrait.bin` | Print the binary portrait; its digits fly in and assemble in 3D (three.js). The intro plays it too |
   | `ls` | List the Desktop folders as clickable links |
   | `open <folder>` / `cd <folder>` | Open `about`, `projects`, `experience` or `contact` |
   | `contact` | Print contact details |
@@ -61,8 +61,10 @@ js/
   desktop/                  clock.js, media.js (missing-image fallbacks), boot.js (intro)
   windows/                  manager.js (open/close/drag/zoom), carousel.js, clipboard.js
   terminal/                 output.js (printing), commands.js (add commands here),
-                            intro.js (typed intro), portrait.js (binary portrait)
+                            intro.js (typed intro), portrait.js (binary portrait),
+                            portrait-3d.js (three.js assemble animation)
   background/               doodle-shapes.js (SVG paths), doodles.js (canvas animation)
+  vendor/three.min.js       three.js r149, loaded once the intro starts typing (not at page load)
 assets/
   profile.jpg               Your photo
   projects/                 Project screenshots: project-1.jpg, project-2.jpg, ...
@@ -94,6 +96,7 @@ Every template spot in `index.html` has a comment explaining what to replace.
 
 - HTML, CSS and vanilla JavaScript
 - [GSAP 3.12.5](https://gsap.com/) for the intro and window animations
+- [three.js r149](https://threejs.org/) for the portrait animation (bundled in `js/vendor/`, MIT)
 - [Iconify](https://iconify.design/) with the Solar icon set and SVG Logos
 - Inter and JetBrains Mono from Google Fonts. On macOS, the system San Francisco font is used.
 

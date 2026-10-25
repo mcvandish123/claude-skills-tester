@@ -1,6 +1,7 @@
 /* ==========================================================================
    Binary portrait
-   Fills a <pre> with the portrait. Pass an existing <pre> to fill it in place.
+   Fills a <pre> with the portrait. Pass an existing <pre> to fill it in place,
+   and pass digits (from rollDigits) to draw a specific set of 0s and 1s.
    ========================================================================== */
 (() => {
   'use strict';
@@ -53,17 +54,20 @@
     '000000000000000000000000000000000000000000000000000001012101101110001002',
   ];
 
-  function portrait(pre = document.createElement('pre')) {
+  // Same shape as PORTRAIT, with every tone digit swapped for a random 0 or 1
+  const rollDigits = () => PORTRAIT.map((row) => row.replace(/\d/g, () => (Math.random() < 0.5 ? '0' : '1')));
+
+  function portrait(pre = document.createElement('pre'), digits = rollDigits()) {
     pre.className = 'term__art';
     pre.setAttribute('aria-hidden', 'true');
     pre.replaceChildren();
     PORTRAIT.forEach((row, i) => {
       if (i) pre.append('\n');
-      row.replace(/ +|(\d)\1*/g, (run, level) => {
+      row.replace(/ +|(\d)\1*/g, (run, level, col) => {
         if (!level) { pre.append(run); return run; }
         const span = document.createElement('span');
         span.className = `term__art--${level}`;
-        span.textContent = run.replace(/./g, () => (Math.random() < 0.5 ? '0' : '1'));
+        span.textContent = digits[i].slice(col, col + run.length);
         pre.append(span);
         return run;
       });
@@ -72,4 +76,5 @@
   }
 
   App.renderPortrait = portrait;
+  App.portrait = { LEVELS: PORTRAIT, rollDigits };
 })();

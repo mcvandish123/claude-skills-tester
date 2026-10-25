@@ -21,7 +21,7 @@
       ].forEach((t) => line(t));
     },
     whoami() { line('Benjamin Asjali', 'term__res term__res--strong'); },
-    portrait() { out.append(App.renderPortrait()); },
+    portrait() { App.playPortrait(out); },
     ls: listFolders,
     contact() {
       line('email     benjaminasjali1@gmail.com');
@@ -50,7 +50,7 @@
     if (name === 'cat' && args[0] === 'role.txt') {
       line('Backend Engineer & DevOps Engineer');
     } else if (name === 'cat' && args[0] === 'portrait.bin') {
-      out.append(App.renderPortrait());
+      App.playPortrait(out);
     } else if (name === 'sudo') {
       line('Nice try. This incident will be reported.', 'term__res term__muted');
     } else if (commands[name.toLowerCase()]) {
